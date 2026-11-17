@@ -27,7 +27,35 @@ app.post("/", async function(req, res) {
     } finally {
         await disconnectFromMongoDB();
         res.send("Animale inserito con successo!");
-  }
+    }
+});
+
+app.post("/search", async function(req, res) {
+    var nomeanimale = String(req.body.nome);
+    const client = await connectToMongoDB();
+    var risposta = "";
+
+    try {
+        const db = client.db("esercizio_animali");
+        const animaliCollection = db.collection("animali");
+
+        const risultati = await animaliCollection.find({ nome: nomeanimale }).toArray();
+
+        if (risultati.length === 0) {
+            risposta = "Nessun animale trovato con il nome inserito.";
+        } else {
+            // Se più righe hanno lo stesso nome le mette una sotto l'altra
+            risposta = risultati
+                .map(animale => `Nome: ${animale.nome} | Presente: ${animale.presente} | Data Acquisto: ${animale.datacquisto}`)
+                .join("<br>");
+        }
+    } catch (error) {
+        console.error("Errore durante la ricerca:", error);
+        risposta = "Errore durante la ricerca.";
+    } finally {
+        await disconnectFromMongoDB();
+        res.send(risposta);
+    }
 });
 
 app.listen(3000, async () => {

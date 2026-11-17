@@ -37,6 +37,7 @@
         border-radius: 20px;
         display: flex;
         justify-content: center;
+        margin-bottom: 25px;
     }
 
     .scritta {
@@ -51,13 +52,21 @@
 
     <body>
         <div class="total">
-        <h1>da node a MongoDB<h1>
+            <h1>da node a MongoDB</h1>
             <div class="container">
-            <form method="post" action="/">
-                <label>il nuovo animale acquistato</label><br>
-                <input type="text" name="nome" placeholder="inserisci il nome..." required>
-                <input type="submit" value="aggiungi">
-            </form>
+                <form method="post" action="/">
+                    <label>il nuovo animale acquistato</label><br>
+                    <input type="text" name="nome" placeholder="inserisci il nome..." required>
+                    <input type="submit" value="aggiungi">
+                </form>
+            </div>
+
+            <div class="container">
+                <form method="post" action="/search">
+                    <label>cerca animale per nome</label><br>
+                    <input type="text" name="nome" placeholder="cerca per nome..." required>
+                    <input type="submit" value="cerca">
+                </form>
             </div>
         </div>
     </body>
