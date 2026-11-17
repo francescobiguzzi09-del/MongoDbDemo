@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="it">
+    <style>
+    input[type=text], input[type=submit] {
+        border: none;
+        border-radius: 15px;
+        padding: 15px;
+        background-color: #e8e8e8;
+        box-shadow: 6px 6px 12px #ffffff,
+                    -6px -6px 12px #c5c5c5;
+        font-size: medium;
+        font-weight: bold;
+        max-width: 200px;
+        margin: 40px 20px 20px;
+    }
+
+    input[type=text]:focus {
+        outline-color: white;
+        place-content: "Enter your message!";
+    }
+
+    input[type=submit]:hover {
+        border: 1px solid white;
+        background-color: #c0bebe;
+    }
+
+    input[type=submit]:active {
+        box-shadow: 4px 4px 12px #c5c5c5,
+                    -4px -4px 12px #ffffff;
+    }
+
+    .container {
+        background-color: #e8e8e8;
+        height: 200px;
+        width: 500px;
+        border: solid;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .scritta {
+        margin-top: 10px;
+    }
+
+    .total {
+        align-items: center;
+        justify-content: center;
+    }
+    </style>
+
+    <body>
+        <div class="total">
+        <h1>da node a MongoDB<h1>
+            <div class="container">
+            <form method="post" action="/">
+                <label>il nuovo animale acquistato</label><br>
+                <input type="text" name="nome" placeholder="inserisci il nome..." required>
+                <input type="submit" value="aggiungi">
+            </form>
+            </div>
+        </div>
+    </body>
+</html>
